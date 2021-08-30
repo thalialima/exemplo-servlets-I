@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&display=swap"
+	rel="stylesheet">
+<title>Cadastro de Empresas</title>
+
+</head>
+
+<body>
+	<!-- Cabeçalho (título e subtítulo) -->
+	<header>
+		<div>
+			<h1 id="titulo">Cadastro de Empresas</h1>
+			<br>
+		</div>
+	</header>
+
+	<!-- Início do formulário -->
+	<form action="novaEmpresa" method="post"> <!-- define para onde a requisição será enviada ao submeter o form -->
+	<!-- por padão o formulário envia uma requisição GET, mas isso pode ser alterado por meio do "method" -->
+	<!-- o método post esconde os parâmetros dentro do corpo da requisição-->
+		<fieldset class="grupo">
+			<!-- Campo do nome com legenda "nome"-->
+			<div class="campo">
+				<label for="nome"><strong>Nome da Empresa</strong></label> 
+				<input type="text" name="nome" id="nome" required>
+				<input type="submit">
+			</div>
+			<br>
+			<!-- Campo de id com legenda "id" 
+			<div class="campo">
+				<label for="id"><strong>Identificador</strong></label> 
+				<input type="text" name="id" id="id" required>
+				<input type="submit">
+			</div>
+			-->
+		</fieldset>
+	</form>
+<body>
+</html>
