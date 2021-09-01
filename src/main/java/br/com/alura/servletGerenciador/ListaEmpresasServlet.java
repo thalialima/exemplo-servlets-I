@@ -29,11 +29,11 @@ public class ListaEmpresasServlet extends HttpServlet {
 
 		// joga o atributo na requisição
 		request.setAttribute("listaDeEmpresas", lista);
-
+		
 		// chama o JSP
 		RequestDispatcher rd = request.getRequestDispatcher("/listaEmpresas.jsp");
 
-		// envia a requisição
+		//envia a requisição para o JSP
 		rd.forward(request, response);
 
 

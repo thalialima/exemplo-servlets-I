@@ -51,4 +51,15 @@ public class BancoDeDados {
 		}
 	}
 
+	//busca a empresa pelo seu id
+	public Empresa buscaEmpresaPeloId(Integer id) {
+		for (Empresa empresa : lista) {
+			if(empresa.getId() == id) {
+				return empresa;
+			}
+		}
+		
+		throw new ElementoNaoEncontradoException("A empresa não está na lista");
+	}
+
 }

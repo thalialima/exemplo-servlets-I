@@ -23,12 +23,14 @@
 	<font size="5"> <!--  Altera o tamanho da fonte  -->
 		<ul>
 			<%
-			//pega o atributo da requisição e armazena em uma string
+			//pega o atributo da requisição e armazena em um objeto
 			List<Empresa> listaDeEmpresas = (List<Empresa>) request.getAttribute("listaDeEmpresas");
 			for (Empresa e : listaDeEmpresas) {
 			%>
-			<li><%=e.getNome() + ", "%> <%=e.getData()%> <a
-				href="/servletGerenciador/removeEmpresa?id=<%=e.getId()%>">remove</a></li>
+			<li><%=e.getNome() + ", "%> <%=e.getData()%> 
+			<a href="/servletGerenciador/mostraEmpresa?id=<%=e.getId()%>">editar</a>
+			<a href="/servletGerenciador/removeEmpresa?id=<%=e.getId()%>">remove</a></li>
+			<br>
 			<%
 			}
 			%>
