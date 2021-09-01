@@ -19,35 +19,23 @@ public class ListaEmpresasServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;// versão da classe
 
-	// com o método doGet fica especificado que o servidor dá suporte apenas p/ o get
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+	// com o método doGet fica especificado que o servidor dá suporte apenas p/ o
+	// get
+	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
 		BancoDeDados bd = new BancoDeDados();
 		List<Empresa> lista = bd.getEmpresas();
-		
-		//chama o JSP
-		RequestDispatcher rd = request.getRequestDispatcher("/listaEmpresas.jsp");
-		//joga o atributo na requisição
+
+		// joga o atributo na requisição
 		request.setAttribute("listaDeEmpresas", lista);
-		//envia a requisição
+
+		// chama o JSP
+		RequestDispatcher rd = request.getRequestDispatcher("/listaEmpresas.jsp");
+
+		// envia a requisição
 		rd.forward(request, response);
-		
-		
-		
-		
 
-		/*
-		PrintWriter saida = response.getWriter();
-
-		saida.println("<html><body>");
-		saida.println("<ul>");
-		for (Empresa empresa : lista) { //imprimindo lista de empresas
-			saida.format("<li>%s</li>", empresa.getNome());
-		}
-		saida.println("</ul>");
-		saida.println("</body></html>");
-		*/
 
 	}
 

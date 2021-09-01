@@ -4,8 +4,7 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 
 
 <html>
@@ -17,38 +16,24 @@
 
 	<header>
 		<div>
-			<h2 id="titulo">Lista de Empresas Cadastradas</h2>
-			<br>
+			<h1 id="titulo">Lista de Empresas Cadastradas</h1>
 		</div>
 	</header>
 
-	<ul>
-
-		<!-- items são a lista -->
-		<c:forEach items="${listaDeEmpresas}" var="empresa">
-		
-		
-		</c:forEach>
-
-
-	</ul>
-
-
-
-	<ul>
-
-
-		<%
-		//pega o atributo da requisição e armazena em uma string
-		List<Empresa> listaDeEmpresas = (List<Empresa>) request.getAttribute("listaDeEmpresas");
-		for (Empresa e : listaDeEmpresas) {
-		%>
-		<li><%=e.getNome()%></li>
-
-		<%
-		}
-		%>
-	</ul>
+	<font size="5"> <!--  Altera o tamanho da fonte  -->
+		<ul>
+			<%
+			//pega o atributo da requisição e armazena em uma string
+			List<Empresa> listaDeEmpresas = (List<Empresa>) request.getAttribute("listaDeEmpresas");
+			for (Empresa e : listaDeEmpresas) {
+			%>
+			<li><%=e.getNome() + ", "%> <%=e.getData()%> <a
+				href="/servletGerenciador/removeEmpresa?id=<%=e.getId()%>">remove</a></li>
+			<%
+			}
+			%>
+		</ul>
+	</font>
 
 </body>
 </html>
