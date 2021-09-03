@@ -9,7 +9,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 public class RemoveEmpresa {
 
-	public void executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		System.out.println("Removendo empresa");
 		
@@ -25,7 +25,6 @@ public class RemoveEmpresa {
 		BancoDeDados bd = new BancoDeDados();
 		bd.removeEmpresa(id);
 		
-		//envia uma resposta ao navegador
-		response.sendRedirect("entrada?acao=ListaEmpresas");
+		return "redirect:entrada?acao=ListaEmpresas";
 	}
 }

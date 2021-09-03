@@ -10,7 +10,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 public class AlteraEmpresa {
 
-	public void executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		System.out.println("Alterando empresa pela ação");
 
@@ -30,10 +30,7 @@ public class AlteraEmpresa {
 		empresa.setNome(nomeEmpresa);
 		empresa.setData(dataEmpresa);
 		empresa.setId(id);
-
-		// redirecionamento para listar os dados para o navegador
-		// devolve uma resposta para o navegador p/ redirecionamento (não reenvia o
-		// formulário)
-		response.sendRedirect("entrada?acao=ListaEmpresas");
+		
+		return "redirect:entrada?acao=ListaEmpresas";
 	}
 }

@@ -11,7 +11,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 public class MostraEmpresa {
 
-	public void executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		System.out.println("Mostrando empresa");
 		
@@ -31,11 +31,6 @@ public class MostraEmpresa {
 		//joga o atributo na requisição
 		request.setAttribute("empresa", empresa);
 		
-		//Chama o jsp
-		//o getRequestDispacher() retorna um objeto que serve como um wrapper para o recurso localizado no caminho passado
-		RequestDispatcher rd = request.getRequestDispatcher("/formAlteraEmpresa.jsp");
-		
-		//envia a requisição para o jsp
-		rd.forward(request, response);
+		return "forward:formAlteraEmpresa.jsp";
 	}
 }

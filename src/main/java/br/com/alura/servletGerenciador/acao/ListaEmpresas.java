@@ -13,7 +13,7 @@ import jakarta.servlet.http.HttpServletResponse;
 //Essa classe não é um servlet
 public class ListaEmpresas {
 
-	public void executa(HttpServletRequest request, HttpServletResponse response) 
+	public String executa(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 		
 		System.out.println("Listando empresas cadastradas");
@@ -24,11 +24,7 @@ public class ListaEmpresas {
 		// joga o atributo na requisição
 		request.setAttribute("listaDeEmpresas", lista);
 		
-		// chama o JSP
-		//o getRequestDispacher() retorna um objeto que serve como um wrapper para o recurso localizado no caminho passado
-		RequestDispatcher rd = request.getRequestDispatcher("/listaEmpresas.jsp");
-
-		//envia a requisição para o JSP
-		rd.forward(request, response);
+		
+		return "forward:listaEmpresas.jsp";
 	}
 }

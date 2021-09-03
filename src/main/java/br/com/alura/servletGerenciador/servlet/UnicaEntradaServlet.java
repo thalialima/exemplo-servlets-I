@@ -7,6 +7,7 @@ import br.com.alura.servletGerenciador.acao.ListaEmpresas;
 import br.com.alura.servletGerenciador.acao.MostraEmpresa;
 import br.com.alura.servletGerenciador.acao.NovaEmpresa;
 import br.com.alura.servletGerenciador.acao.RemoveEmpresa;
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -24,30 +25,54 @@ public class UnicaEntradaServlet extends HttpServlet {
 		// Lê o parametro que define a ação
 		String parametroDaAcao = request.getParameter("acao");
 
+		// Variável global
+		String nome = null;
+
 		if (parametroDaAcao.equals("ListaEmpresas")) {
-		
+
 			ListaEmpresas acao = new ListaEmpresas();
-			acao.executa(request, response);
-			
+			// recebe o caminho do recurso
+			nome = acao.executa(request, response);
+
 		} else if (parametroDaAcao.equals("RemoveEmpresa")) {
-		
+
 			RemoveEmpresa acao = new RemoveEmpresa();
-			acao.executa(request, response);
-			
+			// recebe o caminho do recurso
+			nome = acao.executa(request, response);
+
 		} else if (parametroDaAcao.equals("MostraEmpresa")) {
-			
+
 			MostraEmpresa acao = new MostraEmpresa();
-			acao.executa(request, response);
-			
-		}else if(parametroDaAcao.equals("AlteraEmpresa")) {
-			
+			// recebe o caminho do recurso
+			nome = acao.executa(request, response);
+
+		} else if (parametroDaAcao.equals("AlteraEmpresa")) {
+
 			AlteraEmpresa acao = new AlteraEmpresa();
-			acao.executa(request, response);
-			
-		}else if (parametroDaAcao.equals("NovaEmpresa")) {
-			
+			// recebe o caminho do recurso
+			nome = acao.executa(request, response);
+
+		} else if (parametroDaAcao.equals("NovaEmpresa")) {
+
 			NovaEmpresa acao = new NovaEmpresa();
-			acao.executa(request, response);
+			// recebe o caminho do recurso
+			nome = acao.executa(request, response);
+		}
+
+		String[] tipoEEndereco = nome.split(":");
+
+		if (tipoEEndereco[0].equals("forward")) {
+			// chama o JSP
+			// o getRequestDispacher() retorna um objeto que serve como um wrapper para o
+			// recurso localizado no caminho passado
+			RequestDispatcher rd = request.getRequestDispatcher(tipoEEndereco[1]);
+
+			// envia a requisição para o JSP
+			rd.forward(request, response);
+		} else if (tipoEEndereco[0].equals("redirect")) {
+
+			// envia uma resposta(redirecionamento) ao navegador
+			response.sendRedirect(tipoEEndereco[1]);
 		}
 	}
 

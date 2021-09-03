@@ -9,7 +9,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 public class NovaEmpresa {
 	
-	public void executa(HttpServletRequest request, HttpServletResponse response) throws IOException {
+	public String executa(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		
 		//pega os dados da requisição
 		String parametroNome = request.getParameter("nome");
@@ -23,8 +23,7 @@ public class NovaEmpresa {
 		
 		bd.adiciona(empresa);
 		
-		//devolve uma resposta para o navegador usando a url informada
-		response.sendRedirect("entrada?acao=ListaEmpresas");
+		return "redirect:entrada?acao=ListaEmpresas";
 	
 	}
 
