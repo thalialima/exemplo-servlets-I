@@ -2,6 +2,7 @@ package br.com.alura.servletGerenciador.servlet;
 
 import java.io.IOException;
 
+import br.com.alura.servletGerenciador.acao.Acao;
 import br.com.alura.servletGerenciador.acao.AlteraEmpresa;
 import br.com.alura.servletGerenciador.acao.ListaEmpresas;
 import br.com.alura.servletGerenciador.acao.MostraEmpresa;
@@ -26,45 +27,20 @@ public class UnicaEntradaServlet extends HttpServlet {
 		// Lê o parametro que define a ação
 		String parametroDaAcao = request.getParameter("acao");
 
+		String nomeDaClasse = "br.com.alura.servletGerenciador.acao." + parametroDaAcao;
+
 		// Variável global
-		String nome = null;
+		String nome;
 
-		if (parametroDaAcao.equals("ListaEmpresas")) {
+		//Padrão de projeto Reflection
+		try {
 
-			ListaEmpresas acao = new ListaEmpresas();
-			// recebe o caminho do recurso
+			// do pacote java.lang
+			Class classe = Class.forName(nomeDaClasse); // carrega a classe com o nome da String
+			Acao acao = (Acao) classe.newInstance();
 			nome = acao.executa(request, response);
-
-		} else if (parametroDaAcao.equals("RemoveEmpresa")) {
-
-			RemoveEmpresa acao = new RemoveEmpresa();
-			// recebe o caminho do recurso
-			nome = acao.executa(request, response);
-
-		} else if (parametroDaAcao.equals("MostraEmpresa")) {
-
-			MostraEmpresa acao = new MostraEmpresa();
-			// recebe o caminho do recurso
-			nome = acao.executa(request, response);
-
-		} else if (parametroDaAcao.equals("AlteraEmpresa")) {
-
-			AlteraEmpresa acao = new AlteraEmpresa();
-			// recebe o caminho do recurso
-			nome = acao.executa(request, response);
-
-		} else if (parametroDaAcao.equals("NovaEmpresa")) {
-
-			NovaEmpresa acao = new NovaEmpresa();
-			// recebe o caminho do recurso
-			nome = acao.executa(request, response);
-
-		} else if (parametroDaAcao.equals("NovaEmpresaForm")) {
-
-			NovaEmpresaForm acao = new NovaEmpresaForm();
-			// recebe o caminho do recurso
-			nome = acao.executa(request, response);
-
+		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException e) {
+			throw new ServletException(e);
 		}
 
 		String[] tipoEEndereco = nome.split(":");
@@ -82,6 +58,45 @@ public class UnicaEntradaServlet extends HttpServlet {
 			// envia uma resposta ao navegador
 			response.sendRedirect(tipoEEndereco[1]);
 		}
+
+//		if (parametroDaAcao.equals("ListaEmpresas")) {
+//
+//			ListaEmpresas acao = new ListaEmpresas();
+//			// recebe o caminho do recurso
+//			nome = acao.executa(request, response);
+//
+//		} else if (parametroDaAcao.equals("RemoveEmpresa")) {
+//
+//			RemoveEmpresa acao = new RemoveEmpresa();
+//			// recebe o caminho do recurso
+//			nome = acao.executa(request, response);
+//
+//		} else if (parametroDaAcao.equals("MostraEmpresa")) {
+//
+//			MostraEmpresa acao = new MostraEmpresa();
+//			// recebe o caminho do recurso
+//			nome = acao.executa(request, response);
+//
+//		} else if (parametroDaAcao.equals("AlteraEmpresa")) {
+//
+//			AlteraEmpresa acao = new AlteraEmpresa();
+//			// recebe o caminho do recurso
+//			nome = acao.executa(request, response);
+//
+//		} else if (parametroDaAcao.equals("NovaEmpresa")) {
+//
+//			NovaEmpresa acao = new NovaEmpresa();
+//			// recebe o caminho do recurso
+//			nome = acao.executa(request, response);
+//
+//		} else if (parametroDaAcao.equals("NovaEmpresaForm")) {
+//
+//			NovaEmpresaForm acao = new NovaEmpresaForm();
+//			// recebe o caminho do recurso
+//			nome = acao.executa(request, response);
+//
+//		}
+
 	}
 
 }

@@ -9,7 +9,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 
 //Classe responsável por chamar o arquivo que contém o formulário de cadastro de novas empresas
-public class NovaEmpresaForm {
+public class NovaEmpresaForm implements Acao{
 	
 	public String executa(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		

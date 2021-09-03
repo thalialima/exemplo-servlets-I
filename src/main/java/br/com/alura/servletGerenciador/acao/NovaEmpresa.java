@@ -7,7 +7,7 @@ import br.com.alura.servletGerenciador.modelo.Empresa;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-public class NovaEmpresa {
+public class NovaEmpresa implements Acao{
 	
 	public String executa(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		

@@ -11,7 +11,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 //Essa classe não é um servlet
-public class ListaEmpresas {
+public class ListaEmpresas implements Acao{
 
 	public String executa(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
