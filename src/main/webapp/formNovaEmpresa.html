@@ -24,7 +24,7 @@
 	</header>
 
 	<!-- Início do formulário -->
-	<form action="novaEmpresa" method="post">
+	<form action="entrada" method="post">
 		<!-- define para onde a requisição será enviada ao submeter o form -->
 		<!-- por padão o formulário envia uma requisição GET, mas isso pode ser alterado por meio do "method" -->
 		<!-- o método post esconde os parâmetros dentro do corpo da requisição-->
@@ -41,8 +41,13 @@
 				<label for="id"><strong>Data de Abertura</strong></label> <input
 					type="text" name="data" id="data" required>
 			</div>
-			<br> 
-			
+			<br>
+
+			<!--  Campo de acao com legenda "acao"  -->
+			<div class="campo">
+				<input type="hidden" name="acao" id="acao" value="NovaEmpresa" required>
+			</div>
+
 			<input type="submit">
 
 		</fieldset>

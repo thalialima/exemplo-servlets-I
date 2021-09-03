@@ -1,5 +1,5 @@
 
-<%@page import="br.com.alura.servletGerenciador.Empresa"%>
+<%@page import="br.com.alura.servletGerenciador.modelo.Empresa"%>
 <%@page import="org.apache.jasper.tagplugins.jstl.core.Import"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -28,8 +28,8 @@
 			for (Empresa e : listaDeEmpresas) {
 			%>
 			<li><%=e.getNome() + ", "%> <%=e.getData()%> 
-			<a href="/servletGerenciador/mostraEmpresa?id=<%=e.getId()%>">editar</a>
-			<a href="/servletGerenciador/removeEmpresa?id=<%=e.getId()%>">remove</a></li>
+			<a href="/servletGerenciador/entrada?acao=MostraEmpresa&id=<%=e.getId()%>">editar</a>
+			<a href="/servletGerenciador/entrada?acao=RemoveEmpresa&id=<%=e.getId()%>">remove</a></li>
 			<br>
 			<%
 			}

@@ -1,29 +1,23 @@
-package br.com.alura.servletGerenciador;
+package br.com.alura.servletGerenciador.acao;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 
+import br.com.alura.servletGerenciador.modelo.BancoDeDados;
+import br.com.alura.servletGerenciador.modelo.Empresa;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class ListaEmpresasServlet
- */
+//Essa classe não é um servlet
+public class ListaEmpresas {
 
-//listaEmpresas
-public class ListaEmpresasServlet extends HttpServlet {
-
-	private static final long serialVersionUID = 1L;// versão da classe
-
-	// com o método doGet fica especificado que o servidor dá suporte apenas p/ o
-	// get
-	protected void service(HttpServletRequest request, HttpServletResponse response)
+	public void executa(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
-
+		
+		System.out.println("Listando empresas cadastradas");
+		
 		BancoDeDados bd = new BancoDeDados();
 		List<Empresa> lista = bd.getEmpresas();
 
@@ -31,12 +25,10 @@ public class ListaEmpresasServlet extends HttpServlet {
 		request.setAttribute("listaDeEmpresas", lista);
 		
 		// chama o JSP
+		//o getRequestDispacher() retorna um objeto que serve como um wrapper para o recurso localizado no caminho passado
 		RequestDispatcher rd = request.getRequestDispatcher("/listaEmpresas.jsp");
 
 		//envia a requisição para o JSP
 		rd.forward(request, response);
-
-
 	}
-
 }

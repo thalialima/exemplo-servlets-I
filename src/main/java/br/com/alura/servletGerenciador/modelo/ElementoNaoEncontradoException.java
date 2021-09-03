@@ -1,4 +1,4 @@
-package br.com.alura.servletGerenciador;
+package br.com.alura.servletGerenciador.modelo;
 
 public class ElementoNaoEncontradoException extends RuntimeException{
 	

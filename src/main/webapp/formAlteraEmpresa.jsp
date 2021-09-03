@@ -1,4 +1,4 @@
-<%@page import="br.com.alura.servletGerenciador.Empresa"%>
+<%@page import="br.com.alura.servletGerenciador.modelo.Empresa"%>
 
 <!DOCTYPE html>
 <html lang="pt">
@@ -26,7 +26,7 @@
 	</header>
 
 	<!-- Início do formulário -->
-	<form action="alteraEmpresa" method="post">
+	<form action="entrada" method="post">
 		<!-- define para onde a requisição será enviada ao submeter o form -->
 		<!-- por padão o formulário envia uma requisição GET, mas isso pode ser alterado por meio do "method" -->
 		<!-- o método post esconde os parâmetros dentro do corpo da requisição-->
@@ -35,7 +35,6 @@
 		//pega o atributo da requisição e armazena em um objeto
 		Empresa empresa = (Empresa) request.getAttribute("empresa");
 		%>
-
 
 		<fieldset class="grupo">
 			<!-- Campo do nome com legenda "nome"-->
@@ -59,6 +58,14 @@
 					required />
 				<!--  o tipo hidden deixa a input escondida -->
 			</div>
+
+			<!--  Campo de acao com legenda "acao"  -->
+			<div class="campo">
+				<input type="hidden" name="acao" id="acao" value="AlteraEmpresa"
+					required />
+				<!--  o tipo hidden deixa a input escondida -->
+			</div>
+
 			<br> <input type="submit">
 
 		</fieldset>

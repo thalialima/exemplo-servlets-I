@@ -1,10 +1,10 @@
-package br.com.alura.servletGerenciador;
+package br.com.alura.servletGerenciador.modelo;
 
 import java.util.ArrayList;
+
 import java.util.Iterator;
 import java.util.List;
 
-import org.apache.jasper.tagplugins.jstl.core.ForEach;
 
 //classe que simula um banco de dados
 public class BancoDeDados {
