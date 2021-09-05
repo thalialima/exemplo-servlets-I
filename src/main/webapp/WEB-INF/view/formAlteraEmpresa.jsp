@@ -24,6 +24,13 @@
 			<br>
 		</div>
 	</header>
+	
+	<!-- Logout -->
+	<div>
+		<font size="5"> <a href="entrada?acao=Logout">Sair</a>
+		</font>
+	</div>
+	<br>
 
 	<!-- Início do formulário -->
 	<form action="entrada" method="post">

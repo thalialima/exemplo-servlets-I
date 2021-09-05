@@ -15,7 +15,9 @@
 </head>
 <body>
 
-	<%Usuario usuarioLogado = (Usuario) request.getAttribute("usuarioLogado"); %> 
+	<%
+	Usuario usuarioLogado = (Usuario) request.getAttribute("usuarioLogado");
+	%>
 
 	<header>
 		<div>
@@ -23,10 +25,15 @@
 		</div>
 	</header>
 
+	<!-- Mensagem de Login -->
 	<div>
-		<h2>
-			Usuário Logado: ${usuarioLogado.login}
-		</h2>
+		<h2>Usuário Logado: ${usuarioLogado.login}</h2>
+	</div>
+
+	<!-- Logout -->
+	<div>
+		<font size="5"> <a href="entrada?acao=Logout">Sair</a>
+		</font>
 	</div>
 
 	<font size="5"> <!--  Altera o tamanho da fonte  -->
