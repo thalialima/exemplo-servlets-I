@@ -14,6 +14,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class UnicaEntradaServlet
@@ -27,12 +28,30 @@ public class UnicaEntradaServlet extends HttpServlet {
 		// Lê o parametro que define a ação
 		String parametroDaAcao = request.getParameter("acao");
 
+		// verificando a sessão do usuário
+		HttpSession sessao = request.getSession();
+
+		// variável auxiliar p entender o código
+		boolean usuarioNaoEstaLogado = sessao.getAttribute("usuarioLogado") == null;
+
+		// variável auxiliar
+		//páginas protegidas são todas as paginas, exceto Login e LoginForm
+		boolean ehUmaAcaoProtegida = !(parametroDaAcao.equals("Login") || parametroDaAcao.equals("LoginForm"));
+
+		// loop infinito
+		if (ehUmaAcaoProtegida && usuarioNaoEstaLogado) {
+			response.sendRedirect("entrada?acao=LoginForm");
+
+			// apenas sai do método
+			return;
+		}
+
 		String nomeDaClasse = "br.com.alura.servletGerenciador.acao." + parametroDaAcao;
 
 		// Variável global
 		String nome;
 
-		//Padrão de projeto Reflection
+		// Padrão de projeto Reflection
 		try {
 
 			// do pacote java.lang
