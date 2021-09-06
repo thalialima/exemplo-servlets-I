@@ -69,4 +69,13 @@
     <servlet-name>UnicaEntradaServlet</servlet-name>
     <url-pattern>/entrada</url-pattern>
   </servlet-mapping>
+  <filter>
+    <display-name>AutorizacaoFilter</display-name>
+    <filter-name>AutorizacaoFilter</filter-name>
+    <filter-class>br.com.alura.servletGerenciador.servlet.AutorizacaoFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>AutorizacaoFilter</filter-name>
+    <url-pattern>/entrada</url-pattern>
+  </filter-mapping>
 </web-app>

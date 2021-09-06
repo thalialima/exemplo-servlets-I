@@ -18,10 +18,10 @@ public class ListaEmpresas implements Acao{
 			throws ServletException, IOException {
 		
 		//verificando a sessão do usuario
-		HttpSession sessao = request.getSession();
-		if(sessao.getAttribute("usuarioLogado") == null) {
-			return "redirect:entrada?acao=LoginForm";
-		}
+//		HttpSession sessao = request.getSession();
+//		if(sessao.getAttribute("usuarioLogado") == null) {
+//			return "redirect:entrada?acao=LoginForm";
+//		}
 		
 		System.out.println("Listando empresas cadastradas");
 		
@@ -30,7 +30,6 @@ public class ListaEmpresas implements Acao{
 
 		// joga o atributo na requisição
 		request.setAttribute("listaDeEmpresas", lista);
-		
 		
 		return "forward:listaEmpresas.jsp";
 	}
